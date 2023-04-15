@@ -1,0 +1,752 @@
+---
+swagger: "2.0"
+info:
+  version: "1.0.11"
+  title: "Swagger UniVerse"
+host: "99qv101k0a.execute-api.us-east-1.amazonaws.com"
+basePath: "/v1"
+schemes:
+- "https"
+paths:
+  /comment:
+    post:
+      consumes:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+  /comment/createWithList:
+    post:
+      operationId: "createCommentWithListInput"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "ArrayOfComment"
+        required: true
+        schema:
+          $ref: "#/definitions/ArrayOfComment"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ArrayOfComment"
+  /comment/fetchbyCriteria:
+    post:
+      operationId: "fetchComments"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "ArrayOfCriteria"
+        required: true
+        schema:
+          $ref: "#/definitions/ArrayOfCriteria"
+      responses: {}
+  /comment/{commentId}:
+    get:
+      operationId: "getCommentById"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "commentId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Comment"
+        "400":
+          description: "400 response"
+        "404":
+          description: "404 response"
+    put:
+      operationId: "updateComment"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - name: "commentId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "Comment"
+        required: true
+        schema:
+          $ref: "#/definitions/Comment"
+      - in: "body"
+        name: "Comment"
+        required: true
+        schema:
+          $ref: "#/definitions/Comment"
+      - in: "body"
+        name: "Comment"
+        required: true
+        schema:
+          $ref: "#/definitions/Comment"
+      responses: {}
+    delete:
+      operationId: "CommentDelete"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "commentId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "400":
+          description: "400 response"
+        "404":
+          description: "404 response"
+  /event:
+    post:
+      operationId: "createEvent"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - in: "body"
+        name: "Event"
+        required: true
+        schema:
+          $ref: "#/definitions/Event"
+      - in: "body"
+        name: "Event"
+        required: true
+        schema:
+          $ref: "#/definitions/Event"
+      - in: "body"
+        name: "Event"
+        required: true
+        schema:
+          $ref: "#/definitions/Event"
+      responses: {}
+  /event/createWithList:
+    post:
+      operationId: "createEventsWithListInput"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "ArrayOfEvent"
+        required: true
+        schema:
+          $ref: "#/definitions/ArrayOfEvent"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ArrayOfEvent"
+  /event/fetchbyCriteria:
+    post:
+      operationId: "fetchEvent by criteria"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "ArrayOfCriteria"
+        required: true
+        schema:
+          $ref: "#/definitions/ArrayOfCriteria"
+      responses: {}
+  /event/{eventId}:
+    get:
+      operationId: "getEventById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Event"
+        "400":
+          description: "400 response"
+        "404":
+          description: "404 response"
+    put:
+      operationId: "updateEvent"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "Event"
+        required: true
+        schema:
+          $ref: "#/definitions/Event"
+      - in: "body"
+        name: "Event"
+        required: true
+        schema:
+          $ref: "#/definitions/Event"
+      - in: "body"
+        name: "Event"
+        required: true
+        schema:
+          $ref: "#/definitions/Event"
+      responses: {}
+    delete:
+      operationId: "deleteEvent"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "400":
+          description: "400 response"
+        "404":
+          description: "404 response"
+  /eventcontent:
+    post:
+      operationId: "createEventContent"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - in: "body"
+        name: "EventContent"
+        required: true
+        schema:
+          $ref: "#/definitions/EventContent"
+      - in: "body"
+        name: "EventContent"
+        required: true
+        schema:
+          $ref: "#/definitions/EventContent"
+      - in: "body"
+        name: "EventContent"
+        required: true
+        schema:
+          $ref: "#/definitions/EventContent"
+      responses: {}
+  /eventcontents/{eventId}:
+    get:
+      operationId: "getEventContentsByEventId"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ArrayOfEventContent"
+        "400":
+          description: "400 response"
+        "404":
+          description: "404 response"
+    put:
+      operationId: "updateEventContentByEventId"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "ArrayOfEventContent"
+        required: true
+        schema:
+          $ref: "#/definitions/ArrayOfEventContent"
+      responses: {}
+    delete:
+      operationId: "delete event Contents"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "400":
+          description: "400 response"
+        "404":
+          description: "404 response"
+  /livestream:
+    post:
+      operationId: "createLiveStream"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - in: "body"
+        name: "LiveStream"
+        required: true
+        schema:
+          $ref: "#/definitions/LiveStream"
+      - in: "body"
+        name: "LiveStream"
+        required: true
+        schema:
+          $ref: "#/definitions/LiveStream"
+      - in: "body"
+        name: "LiveStream"
+        required: true
+        schema:
+          $ref: "#/definitions/LiveStream"
+      responses: {}
+  /livestream/{eventId}:
+    get:
+      operationId: "getLiveStreamByEventId"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/LiveStream"
+        "400":
+          description: "400 response"
+        "404":
+          description: "404 response"
+    delete:
+      operationId: "deleteLiveStream"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "400":
+          description: "400 response"
+        "404":
+          description: "404 response"
+  /notification:
+    post:
+      operationId: "createNotification"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - in: "body"
+        name: "Notification"
+        required: true
+        schema:
+          $ref: "#/definitions/Notification"
+      - in: "body"
+        name: "Notification"
+        required: true
+        schema:
+          $ref: "#/definitions/Notification"
+      - in: "body"
+        name: "Notification"
+        required: true
+        schema:
+          $ref: "#/definitions/Notification"
+      responses: {}
+  /recommendation:
+    post:
+      operationId: "createRecommendation"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - in: "body"
+        name: "Recommendation"
+        required: true
+        schema:
+          $ref: "#/definitions/Recommendation"
+      - in: "body"
+        name: "Recommendation"
+        required: true
+        schema:
+          $ref: "#/definitions/Recommendation"
+      - in: "body"
+        name: "Recommendation"
+        required: true
+        schema:
+          $ref: "#/definitions/Recommendation"
+      responses: {}
+  /recommendations/{userId}:
+    get:
+      operationId: "getRecommendationsByUserId"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/ArrayOfRecommendation"
+        "400":
+          description: "400 response"
+        "404":
+          description: "404 response"
+    put:
+      operationId: "updateRecommendationsByuserId"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "ArrayOfRecommendation"
+        required: true
+        schema:
+          $ref: "#/definitions/ArrayOfRecommendation"
+      responses: {}
+  /user:
+    post:
+      operationId: "createUser"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - in: "body"
+        name: "User"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      - in: "body"
+        name: "User"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      - in: "body"
+        name: "User"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses: {}
+  /user/createWithList:
+    post:
+      operationId: "createUsersWithListInput"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "ArrayOfUser"
+        required: true
+        schema:
+          $ref: "#/definitions/ArrayOfUser"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/User"
+  /user/login:
+    get:
+      operationId: "loginUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "password"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "email"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/User"
+          headers:
+            X-Rate-Limit:
+              type: "string"
+            X-Expires-After:
+              type: "string"
+        "400":
+          description: "400 response"
+  /user/logout:
+    get:
+      operationId: "logoutUser"
+      consumes:
+      - "application/json"
+      responses: {}
+  /user/{userId}:
+    get:
+      operationId: "getUserById"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/User"
+        "400":
+          description: "400 response"
+        "404":
+          description: "404 response"
+    put:
+      operationId: "updateUser"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - name: "userId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "User"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      - in: "body"
+        name: "User"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      - in: "body"
+        name: "User"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses: {}
+    delete:
+      operationId: "deleteUser"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "400":
+          description: "400 response"
+        "404":
+          description: "404 response"
+definitions:
+  Comment:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      eventId:
+        type: "string"
+      authorId:
+        type: "string"
+        description: "User Id of the comment author"
+      likeCount:
+        type: "integer"
+        format: "int64"
+      content:
+        type: "string"
+      timeStamp:
+        $ref: "#/definitions/TimeStamp"
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      phone:
+        type: "string"
+      userType:
+        type: "string"
+        description: "type of user"
+        enum:
+        - "organizer"
+        - "attendee"
+      tags:
+        type: "array"
+        items:
+          $ref: "#/definitions/Tag"
+  Address:
+    type: "object"
+    properties:
+      street:
+        type: "string"
+      city:
+        type: "string"
+      state:
+        type: "string"
+      zip:
+        type: "string"
+  ArrayOfEvent:
+    type: "array"
+    items:
+      $ref: "#/definitions/Event"
+  Criteria:
+    type: "object"
+    properties:
+      criteria:
+        type: "string"
+      values:
+        type: "object"
+        properties: {}
+  ArrayOfEventContent:
+    type: "array"
+    items:
+      $ref: "#/definitions/EventContent"
+  ArrayOfUser:
+    type: "array"
+    items:
+      $ref: "#/definitions/User"
+  Notification:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      content:
+        type: "string"
+      userId:
+        type: "string"
+  Recommendation:
+    type: "object"
+    properties:
+      eventId:
+        type: "string"
+      content:
+        type: "string"
+  TimeStamp:
+    type: "object"
+    properties:
+      timestamp:
+        type: "string"
+  ArrayOfCriteria:
+    type: "array"
+    items:
+      $ref: "#/definitions/Criteria"
+  LiveStream:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      eventId:
+        type: "string"
+  ArrayOfRecommendation:
+    type: "array"
+    items:
+      $ref: "#/definitions/Recommendation"
+  ArrayOfComment:
+    type: "array"
+    items:
+      $ref: "#/definitions/Comment"
+  Event:
+    type: "object"
+    required:
+    - "location"
+    - "organizerId"
+    - "tags"
+    - "timeStamp"
+    - "title"
+    properties:
+      id:
+        type: "string"
+      title:
+        type: "string"
+      organizerId:
+        type: "string"
+      location:
+        $ref: "#/definitions/Location"
+      timeStamp:
+        $ref: "#/definitions/TimeStamp"
+      tags:
+        type: "array"
+        items:
+          $ref: "#/definitions/Tag"
+  EventContent:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      eventId:
+        type: "string"
+  Tag:
+    type: "object"
+    properties:
+      tagName:
+        type: "string"
+        description: "Name of the Tag"
+        enum:
+        - "graduation"
+        - "socials"
+        - "club"
+        - "misc"
+        - "educational"
+  Location:
+    type: "object"
+    properties:
+      longitude:
+        type: "string"
+        description: "Longitude of the location"
+      latitude:
+        type: "string"
+        description: "Latitude of the location"
+      address:
+        $ref: "#/definitions/Address"
