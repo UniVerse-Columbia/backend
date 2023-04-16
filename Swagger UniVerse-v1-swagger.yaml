@@ -1,752 +1,1076 @@
----
-swagger: "2.0"
+openapi: 3.0.3
 info:
-  version: "1.0.11"
-  title: "Swagger UniVerse"
-host: "99qv101k0a.execute-api.us-east-1.amazonaws.com"
-basePath: "/v1"
-schemes:
-- "https"
+  title: Swagger UniVerse
+  description: ''
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: ''
+tags:
+  - name: user
+    description: Operations about user
 paths:
-  /comment:
-    post:
-      consumes:
-      - "application/json"
-      responses:
-        "200":
-          description: "200 response"
-  /comment/createWithList:
-    post:
-      operationId: "createCommentWithListInput"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "ArrayOfComment"
-        required: true
-        schema:
-          $ref: "#/definitions/ArrayOfComment"
-      responses:
-        "200":
-          description: "200 response"
-          schema:
-            $ref: "#/definitions/ArrayOfComment"
-  /comment/fetchbyCriteria:
-    post:
-      operationId: "fetchComments"
-      consumes:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "ArrayOfCriteria"
-        required: true
-        schema:
-          $ref: "#/definitions/ArrayOfCriteria"
-      responses: {}
-  /comment/{commentId}:
-    get:
-      operationId: "getCommentById"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "commentId"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        "200":
-          description: "200 response"
-          schema:
-            $ref: "#/definitions/Comment"
-        "400":
-          description: "400 response"
-        "404":
-          description: "404 response"
-    put:
-      operationId: "updateComment"
-      consumes:
-      - "application/xml"
-      - "application/json"
-      - "application/x-www-form-urlencoded"
-      parameters:
-      - name: "commentId"
-        in: "path"
-        required: true
-        type: "string"
-      - in: "body"
-        name: "Comment"
-        required: true
-        schema:
-          $ref: "#/definitions/Comment"
-      - in: "body"
-        name: "Comment"
-        required: true
-        schema:
-          $ref: "#/definitions/Comment"
-      - in: "body"
-        name: "Comment"
-        required: true
-        schema:
-          $ref: "#/definitions/Comment"
-      responses: {}
-    delete:
-      operationId: "CommentDelete"
-      consumes:
-      - "application/json"
-      parameters:
-      - name: "commentId"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        "400":
-          description: "400 response"
-        "404":
-          description: "404 response"
-  /event:
-    post:
-      operationId: "createEvent"
-      consumes:
-      - "application/xml"
-      - "application/json"
-      - "application/x-www-form-urlencoded"
-      parameters:
-      - in: "body"
-        name: "Event"
-        required: true
-        schema:
-          $ref: "#/definitions/Event"
-      - in: "body"
-        name: "Event"
-        required: true
-        schema:
-          $ref: "#/definitions/Event"
-      - in: "body"
-        name: "Event"
-        required: true
-        schema:
-          $ref: "#/definitions/Event"
-      responses: {}
-  /event/createWithList:
-    post:
-      operationId: "createEventsWithListInput"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "ArrayOfEvent"
-        required: true
-        schema:
-          $ref: "#/definitions/ArrayOfEvent"
-      responses:
-        "200":
-          description: "200 response"
-          schema:
-            $ref: "#/definitions/ArrayOfEvent"
-  /event/fetchbyCriteria:
-    post:
-      operationId: "fetchEvent by criteria"
-      consumes:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "ArrayOfCriteria"
-        required: true
-        schema:
-          $ref: "#/definitions/ArrayOfCriteria"
-      responses: {}
-  /event/{eventId}:
-    get:
-      operationId: "getEventById"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "eventId"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        "200":
-          description: "200 response"
-          schema:
-            $ref: "#/definitions/Event"
-        "400":
-          description: "400 response"
-        "404":
-          description: "404 response"
-    put:
-      operationId: "updateEvent"
-      consumes:
-      - "application/xml"
-      - "application/json"
-      - "application/x-www-form-urlencoded"
-      parameters:
-      - name: "eventId"
-        in: "path"
-        required: true
-        type: "string"
-      - in: "body"
-        name: "Event"
-        required: true
-        schema:
-          $ref: "#/definitions/Event"
-      - in: "body"
-        name: "Event"
-        required: true
-        schema:
-          $ref: "#/definitions/Event"
-      - in: "body"
-        name: "Event"
-        required: true
-        schema:
-          $ref: "#/definitions/Event"
-      responses: {}
-    delete:
-      operationId: "deleteEvent"
-      parameters:
-      - name: "eventId"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        "400":
-          description: "400 response"
-        "404":
-          description: "404 response"
-  /eventcontent:
-    post:
-      operationId: "createEventContent"
-      consumes:
-      - "application/xml"
-      - "application/json"
-      - "application/x-www-form-urlencoded"
-      parameters:
-      - in: "body"
-        name: "EventContent"
-        required: true
-        schema:
-          $ref: "#/definitions/EventContent"
-      - in: "body"
-        name: "EventContent"
-        required: true
-        schema:
-          $ref: "#/definitions/EventContent"
-      - in: "body"
-        name: "EventContent"
-        required: true
-        schema:
-          $ref: "#/definitions/EventContent"
-      responses: {}
-  /eventcontents/{eventId}:
-    get:
-      operationId: "getEventContentsByEventId"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "eventId"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        "200":
-          description: "200 response"
-          schema:
-            $ref: "#/definitions/ArrayOfEventContent"
-        "400":
-          description: "400 response"
-        "404":
-          description: "404 response"
-    put:
-      operationId: "updateEventContentByEventId"
-      consumes:
-      - "application/json"
-      parameters:
-      - name: "eventId"
-        in: "path"
-        required: true
-        type: "string"
-      - in: "body"
-        name: "ArrayOfEventContent"
-        required: true
-        schema:
-          $ref: "#/definitions/ArrayOfEventContent"
-      responses: {}
-    delete:
-      operationId: "delete event Contents"
-      consumes:
-      - "application/json"
-      parameters:
-      - name: "eventId"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        "400":
-          description: "400 response"
-        "404":
-          description: "404 response"
-  /livestream:
-    post:
-      operationId: "createLiveStream"
-      consumes:
-      - "application/xml"
-      - "application/json"
-      - "application/x-www-form-urlencoded"
-      parameters:
-      - in: "body"
-        name: "LiveStream"
-        required: true
-        schema:
-          $ref: "#/definitions/LiveStream"
-      - in: "body"
-        name: "LiveStream"
-        required: true
-        schema:
-          $ref: "#/definitions/LiveStream"
-      - in: "body"
-        name: "LiveStream"
-        required: true
-        schema:
-          $ref: "#/definitions/LiveStream"
-      responses: {}
-  /livestream/{eventId}:
-    get:
-      operationId: "getLiveStreamByEventId"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "eventId"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        "200":
-          description: "200 response"
-          schema:
-            $ref: "#/definitions/LiveStream"
-        "400":
-          description: "400 response"
-        "404":
-          description: "404 response"
-    delete:
-      operationId: "deleteLiveStream"
-      consumes:
-      - "application/json"
-      parameters:
-      - name: "eventId"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        "400":
-          description: "400 response"
-        "404":
-          description: "404 response"
-  /notification:
-    post:
-      operationId: "createNotification"
-      consumes:
-      - "application/xml"
-      - "application/json"
-      - "application/x-www-form-urlencoded"
-      parameters:
-      - in: "body"
-        name: "Notification"
-        required: true
-        schema:
-          $ref: "#/definitions/Notification"
-      - in: "body"
-        name: "Notification"
-        required: true
-        schema:
-          $ref: "#/definitions/Notification"
-      - in: "body"
-        name: "Notification"
-        required: true
-        schema:
-          $ref: "#/definitions/Notification"
-      responses: {}
-  /recommendation:
-    post:
-      operationId: "createRecommendation"
-      consumes:
-      - "application/xml"
-      - "application/json"
-      - "application/x-www-form-urlencoded"
-      parameters:
-      - in: "body"
-        name: "Recommendation"
-        required: true
-        schema:
-          $ref: "#/definitions/Recommendation"
-      - in: "body"
-        name: "Recommendation"
-        required: true
-        schema:
-          $ref: "#/definitions/Recommendation"
-      - in: "body"
-        name: "Recommendation"
-        required: true
-        schema:
-          $ref: "#/definitions/Recommendation"
-      responses: {}
-  /recommendations/{userId}:
-    get:
-      operationId: "getRecommendationsByUserId"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "userId"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        "200":
-          description: "200 response"
-          schema:
-            $ref: "#/definitions/ArrayOfRecommendation"
-        "400":
-          description: "400 response"
-        "404":
-          description: "404 response"
-    put:
-      operationId: "updateRecommendationsByuserId"
-      consumes:
-      - "application/json"
-      parameters:
-      - name: "userId"
-        in: "path"
-        required: true
-        type: "string"
-      - in: "body"
-        name: "ArrayOfRecommendation"
-        required: true
-        schema:
-          $ref: "#/definitions/ArrayOfRecommendation"
-      responses: {}
   /user:
     post:
-      operationId: "createUser"
-      consumes:
-      - "application/xml"
-      - "application/json"
-      - "application/x-www-form-urlencoded"
-      parameters:
-      - in: "body"
-        name: "User"
-        required: true
-        schema:
-          $ref: "#/definitions/User"
-      - in: "body"
-        name: "User"
-        required: true
-        schema:
-          $ref: "#/definitions/User"
-      - in: "body"
-        name: "User"
-        required: true
-        schema:
-          $ref: "#/definitions/User"
-      responses: {}
+      tags:
+        - user
+      summary: Create user
+      description: This can only be done by the logged in user.
+      operationId: createUser
+      requestBody:
+        description: Created user object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        default:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
   /user/createWithList:
     post:
-      operationId: "createUsersWithListInput"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "ArrayOfUser"
-        required: true
-        schema:
-          $ref: "#/definitions/ArrayOfUser"
+      tags:
+        - user
+      summary: Creates list of users with given input array
+      description: Creates list of users with given input array
+      operationId: createUsersWithListInput
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/User'
       responses:
-        "200":
-          description: "200 response"
-          schema:
-            $ref: "#/definitions/User"
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+        default:
+          description: successful operation
   /user/login:
     get:
-      operationId: "loginUser"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
+      tags:
+        - user
+      summary: Logs user into the system
+      description: ''
+      operationId: loginUser
       parameters:
-      - name: "password"
-        in: "query"
-        required: true
-        type: "string"
-      - name: "email"
-        in: "query"
-        required: true
-        type: "string"
-      responses:
-        "200":
-          description: "200 response"
+        - name: email
+          in: query
+          description: Registered Email Id
+          required: true
           schema:
-            $ref: "#/definitions/User"
+            type: string
+        - name: password
+          in: query
+          description: Password
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
           headers:
             X-Rate-Limit:
-              type: "string"
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
             X-Expires-After:
-              type: "string"
-        "400":
-          description: "400 response"
+              description: date in UTC when token expires
+              schema:
+                type: string
+                format: date-time
+          content:
+           application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid username/password supplied
   /user/logout:
     get:
-      operationId: "logoutUser"
-      consumes:
-      - "application/json"
-      responses: {}
+      tags:
+        - user
+      summary: Logs out current logged in user session
+      description: ''
+      operationId: logoutUser
+      parameters: []
+      responses:
+        default:
+          description: successful operation
   /user/{userId}:
     get:
-      operationId: "getUserById"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/xml"
-      - "application/json"
+      tags:
+        - user
+      summary: Get user by userId
+      description: ''
+      operationId: getUserById
       parameters:
-      - name: "userId"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        "200":
-          description: "200 response"
+        - name: userId
+          in: path
+          description: 'The Id that needs to be fetched'
+          required: true
           schema:
-            $ref: "#/definitions/User"
-        "400":
-          description: "400 response"
-        "404":
-          description: "404 response"
-    put:
-      operationId: "updateUser"
-      consumes:
-      - "application/xml"
-      - "application/json"
-      - "application/x-www-form-urlencoded"
-      parameters:
-      - name: "userId"
-        in: "path"
-        required: true
-        type: "string"
-      - in: "body"
-        name: "User"
-        required: true
-        schema:
-          $ref: "#/definitions/User"
-      - in: "body"
-        name: "User"
-        required: true
-        schema:
-          $ref: "#/definitions/User"
-      - in: "body"
-        name: "User"
-        required: true
-        schema:
-          $ref: "#/definitions/User"
-      responses: {}
-    delete:
-      operationId: "deleteUser"
-      consumes:
-      - "application/json"
-      parameters:
-      - name: "userId"
-        in: "path"
-        required: true
-        type: "string"
+            type: string
       responses:
-        "400":
-          description: "400 response"
-        "404":
-          description: "404 response"
-definitions:
-  Comment:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      eventId:
-        type: "string"
-      authorId:
-        type: "string"
-        description: "User Id of the comment author"
-      likeCount:
-        type: "integer"
-        format: "int64"
-      content:
-        type: "string"
-      timeStamp:
-        $ref: "#/definitions/TimeStamp"
-  User:
-    type: "object"
-    properties:
-      id:
-        type: "string"
-      firstName:
-        type: "string"
-      lastName:
-        type: "string"
-      email:
-        type: "string"
-      password:
-        type: "string"
-      phone:
-        type: "string"
-      userType:
-        type: "string"
-        description: "type of user"
-        enum:
-        - "organizer"
-        - "attendee"
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid username supplied
+        '404':
+          description: User not found
+    put:
       tags:
-        type: "array"
-        items:
-          $ref: "#/definitions/Tag"
-  Address:
-    type: "object"
-    properties:
-      street:
-        type: "string"
-      city:
-        type: "string"
-      state:
-        type: "string"
-      zip:
-        type: "string"
-  ArrayOfEvent:
-    type: "array"
-    items:
-      $ref: "#/definitions/Event"
-  Criteria:
-    type: "object"
-    properties:
-      criteria:
-        type: "string"
-      values:
-        type: "object"
-        properties: {}
-  ArrayOfEventContent:
-    type: "array"
-    items:
-      $ref: "#/definitions/EventContent"
-  ArrayOfUser:
-    type: "array"
-    items:
-      $ref: "#/definitions/User"
-  Notification:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      content:
-        type: "string"
-      userId:
-        type: "string"
-  Recommendation:
-    type: "object"
-    properties:
-      eventId:
-        type: "string"
-      content:
-        type: "string"
-  TimeStamp:
-    type: "object"
-    properties:
-      timestamp:
-        type: "string"
-  ArrayOfCriteria:
-    type: "array"
-    items:
-      $ref: "#/definitions/Criteria"
-  LiveStream:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      eventId:
-        type: "string"
-  ArrayOfRecommendation:
-    type: "array"
-    items:
-      $ref: "#/definitions/Recommendation"
-  ArrayOfComment:
-    type: "array"
-    items:
-      $ref: "#/definitions/Comment"
-  Event:
-    type: "object"
-    required:
-    - "location"
-    - "organizerId"
-    - "tags"
-    - "timeStamp"
-    - "title"
-    properties:
-      id:
-        type: "string"
-      title:
-        type: "string"
-      organizerId:
-        type: "string"
-      location:
-        $ref: "#/definitions/Location"
-      timeStamp:
-        $ref: "#/definitions/TimeStamp"
+        - user
+      summary: Update user
+      description: This can only be done by the logged in user.
+      operationId: updateUser
+      parameters:
+        - name: userId
+          in: path
+          description: userId that need to be deleted
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent user in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        default:
+          description: successful operation
+    delete:
       tags:
-        type: "array"
-        items:
-          $ref: "#/definitions/Tag"
-  EventContent:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      eventId:
-        type: "string"
-  Tag:
-    type: "object"
-    properties:
-      tagName:
-        type: "string"
-        description: "Name of the Tag"
-        enum:
-        - "graduation"
-        - "socials"
-        - "club"
-        - "misc"
-        - "educational"
-  Location:
-    type: "object"
-    properties:
-      longitude:
-        type: "string"
-        description: "Longitude of the location"
-      latitude:
-        type: "string"
-        description: "Latitude of the location"
-      address:
-        $ref: "#/definitions/Address"
+        - user
+      summary: Delete user
+      description: This can only be done by the logged in user.
+      operationId: deleteUser
+      parameters:
+        - name: userId
+          in: path
+          description: The userId that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid username supplied
+        '404':
+          description: User not found
+
+  /event:
+    post:
+      tags:
+        - event
+      summary: Create Event
+      description: This can only be done by the logged in user.
+      operationId: createEvent
+      requestBody:
+        description: Created user object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Event'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Event'
+      responses:
+        default:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Event'
+  /event/createWithList:
+    post:
+      tags:
+        - event
+      summary: Creates list of event with given input array
+      description: Creates list of event with given input array
+      operationId: createEventsWithListInput
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Event'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Event'          
+        default:
+          description: successful operation
+  /event/{eventId}:
+    get:
+      tags:
+        - event
+      summary: Get event by eventId
+      description: ''
+      operationId: getEventById
+      parameters:
+        - name: eventId
+          in: path
+          description: 'The Id that needs to be fetched'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '400':
+          description: Invalid eventId supplied
+        '404':
+          description: Event not found
+    put:
+      tags:
+        - event
+      summary: Update event
+      description: This can only be done by the logged in user.
+      operationId: updateEvent
+      parameters:
+        - name: eventId
+          in: path
+          description: eventId that need to be updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent user in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Event'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Event'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+    delete:
+      tags:
+        - event
+      summary: Delete event
+      description: This can only be done by the logged in user.
+      operationId: deleteEvent
+      parameters:
+        - name: eventId
+          in: path
+          description: The eventId that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid eventId supplied
+        '404':
+          description: event not found
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /event/fetchbyCriteria:
+    post:
+      tags:
+        - event
+      summary: Fetch Event by criteria
+      operationId: fetchEvent by criteria
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items: 
+                $ref: '#/components/schemas/Criteria'
+      responses:
+        default:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Event'
+  /event/fetchAllDetails/{eventId}:
+    get:
+      tags:
+        - event
+      summary: Get all event details (comments, content, livestream) by eventId
+      description: ''
+      operationId: getEventDetailsById
+      parameters:
+        - name: eventId
+          in: path
+          description: 'The Id that needs to be fetched'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid eventId supplied
+        '404':
+          description: Event not found
+  /commment:
+    post:
+      tags:
+        - comment
+      summary: Create Comment
+      description: This can only be done by the logged in user.
+      operationId: createComment
+      requestBody:
+        description: Created user object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        default:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Comment'
+  /comment/createWithList:
+    post:
+      tags:
+        - comment
+      summary: Creates list of commment with given input array
+      description: Creates list of comment with given input array
+      operationId: createCommentWithListInput
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Comment'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comment'          
+        default:
+          description: successful operation
+  /comment/{commentId}:
+    get:
+      tags:
+        - comment
+      summary: Get comment by eventId
+      description: ''
+      operationId: getCommentById
+      parameters:
+        - name: commentId
+          in: path
+          description: 'The commentId that needs to be fetched'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        '400':
+          description: Invalid eventId supplied
+        '404':
+          description: Event not found
+    put:
+      tags:
+        - comment
+      summary: Update Comment
+      description: This can only be done by the logged in user.
+      operationId: updateComment
+      parameters:
+        - name: commentId
+          in: path
+          description: commentId that need to be updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent user in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        default:
+          description: successful operation
+    delete:
+      tags:
+        - comment
+      summary: Delete Comment
+      description: This can only be done by the logged in user.
+      operationId: CommentDelete
+      parameters:
+        - name: commentId
+          in: path
+          description: The commentId that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid commentId supplied
+        '404':
+          description: event not found
+  /comment/fetchbyCriteria:
+    post:
+      tags:
+        - comment
+      summary: Fetch Comments by Ids
+      operationId: fetchComments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items: 
+                $ref: '#/components/schemas/Criteria'
+      responses:
+        default:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comment'
+
+  /recommendation:
+    post:
+      tags:
+        - recommendation
+      summary: Create recommendation
+      description: This is done whenever the user completes a session, to pre-compute recommendations based on history before new login.
+      operationId: createRecommendation
+      requestBody:
+        description: Created recommendation object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recommendation'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Recommendation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Recommendation'
+      responses:
+        default:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recommendation'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Recommendation'
+  /recommendations/{userId}:
+    get:
+      tags:
+        - recommendations
+      summary: Get recommendations by userId
+      description: ''
+      operationId: getRecommendationsByUserId
+      parameters:
+        - name: userId
+          in: path
+          description: 'The userId for which the recommendations are to be fetched'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recommendation'          
+            application/xml:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Recommendation'
+        '400':
+          description: Invalid userId supplied
+        '404':
+          description: User not found
+    put:
+      tags:
+        - recommendations
+      summary: Update recommendations
+      description: Bulk update the set of event recommendations for the userId.
+      operationId: updateRecommendationsByuserId
+      parameters:
+        - name: userId
+          in: path
+          description: userId for which the recommendations are to be updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent user recommendations
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Recommendation'
+      responses:
+        default:
+          description: successful operation
+    
+  /notification:
+    post:
+      tags:
+        - notification
+      summary: Create a push notification
+      description: A new push notification will be created to show to the user.
+      operationId: createNotification
+      requestBody:
+        description: Created notification object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Notification'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Notification'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Notification'
+      responses:
+        default:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notification'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Notification'
+
+  /livestream:
+    post:
+      tags:
+        - livestream
+      summary: Create a new livestream
+      description: Creates a new livestream object when an event organizer starts a livestream.
+      operationId: createLiveStream
+      requestBody:
+        description: Created livestream object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LiveStream'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/LiveStream'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LiveStream'
+      responses:
+        default:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LiveStream'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/LiveStream'
+  /livestream/{eventId}:
+    get:
+      tags:
+        - livestream
+      summary: Get livestream by eventId
+      description: 'Get the livestream feed for the attendee who checks an event they register for'
+      operationId: getLiveStreamByEventId
+      parameters:
+        - name: eventId
+          in: path
+          description: 'The eventId for which the livestream is to be fetched'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LiveStream'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/LiveStream'
+        '400':
+          description: Invalid eventId supplied
+        '404':
+          description: Event not found
+    delete:
+      tags:
+        - livestream
+      summary: Delete livestream
+      description: This would convert the livestream of the eventId into a video for later viewing.
+      operationId: deleteLiveStream
+      parameters:
+        - name: eventId
+          in: path
+          description: The eventId whose livestream is to be stopped
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid eventId supplied
+        '404':
+          description: Event not found
+
+  /eventcontent:
+    post:
+      tags:
+        - eventcontent
+      summary: Create eventcontent
+      description: Creates media (pictures, docs, videos) which is associated with an event.
+      operationId: createEventContent
+      requestBody:
+        description: Created eventcontent object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventContent'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/EventContent'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EventContent'
+      responses:
+        default:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventContent'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/EventContent'
+  /eventcontents/{eventId}:
+    get:
+      tags:
+        - eventcontents
+      summary: Get eventcontents by eventId
+      description: ''
+      operationId: getEventContentsByEventId
+      parameters:
+        - name: eventId
+          in: path
+          description: 'The event for which the eventcontents are to be fetched'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventContent'          
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventContent'
+        '400':
+          description: Invalid eventId supplied
+        '404':
+          description: Events not found
+    put:
+      tags:
+        - eventcontents
+      summary: Update recommendations
+      description: Bulk update the set of event content for the eventId.
+      operationId: updateEventContentByEventId
+      parameters:
+        - name: eventId
+          in: path
+          description: userId for which the recommendations are to be updated
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent user recommendations
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/EventContent'
+      responses:
+        default:
+          description: successful operation
+    delete:
+      tags:
+        - eventcontents
+      summary: Delete all eventcontents by this eventId
+      description: Deletes all eventcontents associated with this eventId.
+      operationId: delete event Contents
+      parameters:
+        - name: eventId
+          in: path
+          description: The eventId that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid eventId supplied
+        '404':
+          description: Event not found
+
+components:
+  schemas:
+    Recommendation:
+      type: object
+      properties:
+        eventId:
+          type: string
+          example: K2dqRTEsWywADM4GacbKISlLrtRh9bPW
+        eventName:
+          type: string
+        eventDescription:
+          type: string
+        organizerId:
+          type: string
+        organizerName:
+          type: string
+        date:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+    Criteria:
+      type: object
+      properties:
+        criteria:
+          type: string
+          example: organizerId / location/ date/ attendeeId / tags
+        values:
+          type: object
+    TimeStamp:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          example: Date time Format (mm/dd/yyyy hh:mm:ss)
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          example: 437 Lytton
+        city:
+          type: string
+          example: Palo Alto
+        state:
+          type: string
+          example: CA
+        zip:
+          type: string
+          example: '94301'
+      xml:
+        name: address
+    Location:
+      type: object
+      properties:
+        longitude:
+          type: string
+          description: Longitude of the location
+        latitude:
+          type: string
+          description: Latitude of the location
+        address:
+          $ref: '#/components/schemas/Address'
+      xml:
+        name: location
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        eventId:
+          type: string
+          example: K2dqRTEsWywADM4GacbKISlLrtRh9bPW
+        authorId:
+          type: string
+          example: K2dqRTEsWywADM4GacbKISlLrtRh9bPW
+          description: User Id of the comment author
+        likeCount:
+          type: integer
+          format: int64
+          example: 1
+        content: 
+          type: string
+          example: This event is organized by EGSC at Columbia University to bid farewell to graduating class.
+        timeStamp:
+          $ref: '#/components/schemas/TimeStamp'          
+      xml:
+        name: comment
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: K2dqRTEsWywADM4GacbKISlLrtRh9bPW
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: James
+        email:
+          type: string
+          example: john@email.com
+        password:
+          type: string
+          example: '12345'
+        phone:
+          type: string
+          example: '1234567890'
+        userType:
+          type: string
+          description: type of user
+          enum: [organizer, attendee]
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+        savedEvents:
+          type: array
+          description: array of event ids saved by user 
+          items:
+            type: string
+            example: K2dqRTEsWywADM4GacbKISlLrtRh9bPW
+      xml:
+        name: user
+    Tag:
+      type: object
+      properties:
+        tagName:
+          type: string
+          description: Name of the Tag
+          enum: [graduation, socials, club, misc , educational]
+      xml:
+        name: tag
+    Event:
+      required:
+        - title
+        - organizerId
+        - location
+        - timeStamp 
+        - tags
+        - attendees
+        - description
+
+      type: object
+      properties:
+        id:
+          type: string
+          example: K2dqRTEsWywADM4GacbKISlLrtRh9bPW
+        description:
+          type: string
+          example: Event is about Carleton Commons Social Event
+        attendees:
+          type: array
+          items: 
+            type: string
+        title:
+          type: string
+          example: Carleton Common EGSC Social
+        organizerId:
+          type: string
+          example: K2dqRTEsWywADM4GacbKISlLrtRh9bPW
+        location:
+          $ref: '#/components/schemas/Location'
+        timeStamp:
+          $ref: '#/components/schemas/TimeStamp'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+      xml:
+        name: event
+    Notification:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        content:
+          type: string
+          example: Your EGSC Event has started
+        fromUserId:
+          type: string
+          example: K2dqRTEsWywADM4GacbKISlLrtRh9bPW
+        toUserId:
+          type: string
+          example: K2dqRTEsWywADM4GacbKISlLrtRh9bPW
+      xml:
+        name: notification
+    LiveStream:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        eventId:
+          type: string
+          example: K2dqRTEsWywADM4GacbKISlLrtRh9bPW
+      xml:
+        name: liveStream
+    EventContent:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        eventId:
+          type: string
+          example: K2dqRTEsWywADM4GacbKISlLrtRh9bPW
+      xml:
+        name: liveStream
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+      xml:
+        name: '##default'
+  requestBodies:
+    UserArray:
+      description: List of user object
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/User'
+  securitySchemes:
+    petstore_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://petstore3.swagger.io/oauth/authorize
+          scopes:
+            write:pets: modify pets in your account
+            read:pets: read your pets
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
