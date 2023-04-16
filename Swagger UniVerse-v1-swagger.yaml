@@ -31,20 +31,11 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/User'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/User'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/User'
       responses:
-        default:
+        '200':
           description: successful operation
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-            application/xml:
               schema:
                 $ref: '#/components/schemas/User'
   /user/createWithList:
@@ -67,12 +58,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'          
-            application/xml:
-              schema:
+                type: array
+              items:
                 $ref: '#/components/schemas/User'
-        default:
-          description: successful operation
   /user/login:
     get:
       tags:
@@ -113,6 +101,10 @@ paths:
                 $ref: '#/components/schemas/User'
         '400':
           description: Invalid username/password supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
   /user/logout:
     get:
       tags:
@@ -122,8 +114,12 @@ paths:
       operationId: logoutUser
       parameters: []
       responses:
-        default:
+        '200':
           description: successful operation
+          content:
+           application/json:
+              schema:
+                $ref: '#/components/schemas/User'
   /user/{userId}:
     get:
       tags:
@@ -144,14 +140,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'          
-            application/xml:
-              schema:
                 $ref: '#/components/schemas/User'
         '400':
           description: Invalid username supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         '404':
           description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
     put:
       tags:
         - user
@@ -171,15 +172,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/User'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/User'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/User'
       responses:
-        default:
+        '200':
           description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
     delete:
       tags:
         - user
@@ -194,10 +193,24 @@ paths:
           schema:
             type: string
       responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
         '400':
           description: Invalid username supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         '404':
           description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
 
   /event:
     post:
@@ -212,20 +225,11 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Event'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Event'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Event'
       responses:
-        default:
+        '200':
           description: successful operation
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Event'
-            application/xml:
               schema:
                 $ref: '#/components/schemas/Event'
   /event/createWithList:
@@ -251,8 +255,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Event'          
-        default:
-          description: successful operation
   /event/{eventId}:
     get:
       tags:
@@ -273,14 +275,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Event'          
-            application/xml:
-              schema:
                 $ref: '#/components/schemas/Event'
         '400':
           description: Invalid eventId supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         '404':
           description: Event not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
     put:
       tags:
         - event
@@ -300,19 +307,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Event'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Event'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Event'
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponse'
+                $ref: '#/components/schemas/Event'
     delete:
       tags:
         - event
@@ -327,12 +328,20 @@ paths:
           schema:
             type: string
       responses:
-        '400':
-          description: Invalid eventId supplied
-        '404':
-          description: event not found
         '200':
           description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '400':
+          description: Invalid eventId supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '404':
+          description: event not found
           content:
             application/json:
               schema:
@@ -351,7 +360,7 @@ paths:
               items: 
                 $ref: '#/components/schemas/Criteria'
       responses:
-        default:
+        '200':
           description: successful operation
           content:
             application/json:
@@ -382,9 +391,17 @@ paths:
                 type: object
         '400':
           description: Invalid eventId supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         '404':
           description: Event not found
-  /commment:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /comment:
     post:
       tags:
         - comment
@@ -398,20 +415,17 @@ paths:
             schema:
               $ref: '#/components/schemas/Comment'
       responses:
-        default:
+        '200':
           description: successful operation
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Comment'
-            application/xml:
               schema:
                 $ref: '#/components/schemas/Comment'
   /comment/createWithList:
     post:
       tags:
         - comment
-      summary: Creates list of commment with given input array
+      summary: Creates list of comment with given input array
       description: Creates list of comment with given input array
       operationId: createCommentWithListInput
       requestBody:
@@ -429,9 +443,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Comment'          
-        default:
-          description: successful operation
+                  $ref: '#/components/schemas/Comment'
   /comment/{commentId}:
     get:
       tags:
@@ -452,14 +464,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Comment'          
-            application/xml:
-              schema:
                 $ref: '#/components/schemas/Comment'
         '400':
           description: Invalid eventId supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         '404':
           description: Event not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
     put:
       tags:
         - comment
@@ -479,15 +496,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Comment'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Comment'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Comment'
       responses:
-        default:
+        '200':
           description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
     delete:
       tags:
         - comment
@@ -502,10 +517,24 @@ paths:
           schema:
             type: string
       responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
         '400':
           description: Invalid commentId supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
         '404':
           description: event not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
   /comment/fetchbyCriteria:
     post:
       tags:
@@ -520,7 +549,7 @@ paths:
               items: 
                 $ref: '#/components/schemas/Criteria'
       responses:
-        default:
+        '200':
           description: successful operation
           content:
             application/json:
@@ -542,20 +571,11 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Recommendation'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Recommendation'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Recommendation'
       responses:
-        default:
+        '200':
           description: successful operation
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Recommendation'
-            application/xml:
               schema:
                 $ref: '#/components/schemas/Recommendation'
   /recommendations/{userId}:
@@ -580,16 +600,19 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Recommendation'          
-            application/xml:
-              schema:
-                type: array
-                items: 
                   $ref: '#/components/schemas/Recommendation'
         '400':
           description: Invalid userId supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         '404':
           description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
     put:
       tags:
         - recommendations
@@ -612,8 +635,14 @@ paths:
               items:
                 $ref: '#/components/schemas/Recommendation'
       responses:
-        default:
+        '200':
           description: successful operation
+          content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Recommendation'
     
   /notification:
     post:
@@ -628,20 +657,11 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Notification'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Notification'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Notification'
       responses:
-        default:
+        '200':
           description: successful operation
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Notification'
-            application/xml:
               schema:
                 $ref: '#/components/schemas/Notification'
 
@@ -658,20 +678,11 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/LiveStream'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/LiveStream'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/LiveStream'
       responses:
-        default:
+        '200':
           description: successful operation
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/LiveStream'
-            application/xml:
               schema:
                 $ref: '#/components/schemas/LiveStream'
   /livestream/{eventId}:
@@ -694,14 +705,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LiveStream'          
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/LiveStream'
+                $ref: '#/components/schemas/LiveStream'  
         '400':
           description: Invalid eventId supplied
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ApiResponse'
         '404':
           description: Event not found
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ApiResponse'
     delete:
       tags:
         - livestream
@@ -716,10 +732,24 @@ paths:
           schema:
             type: string
       responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LiveStream'  
         '400':
           description: Invalid eventId supplied
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ApiResponse'
         '404':
           description: Event not found
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ApiResponse'
 
   /eventcontent:
     post:
@@ -734,20 +764,11 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/EventContent'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/EventContent'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/EventContent'
       responses:
-        default:
+        '200':
           description: successful operation
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/EventContent'
-            application/xml:
               schema:
                 $ref: '#/components/schemas/EventContent'
   /eventcontents/{eventId}:
@@ -772,16 +793,19 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/EventContent'          
-            application/xml:
-              schema:
-                type: array
-                items:
                   $ref: '#/components/schemas/EventContent'
         '400':
           description: Invalid eventId supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         '404':
           description: Events not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
     put:
       tags:
         - eventcontents
@@ -804,8 +828,14 @@ paths:
               items:
                 $ref: '#/components/schemas/EventContent'
       responses:
-        default:
+        '200':
           description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventContent'
     delete:
       tags:
         - eventcontents
@@ -820,10 +850,26 @@ paths:
           schema:
             type: string
       responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventContent'
         '400':
           description: Invalid eventId supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         '404':
           description: Event not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
 
 components:
   schemas:
@@ -874,8 +920,6 @@ components:
         zip:
           type: string
           example: '94301'
-      xml:
-        name: address
     Location:
       type: object
       properties:
@@ -887,8 +931,6 @@ components:
           description: Latitude of the location
         address:
           $ref: '#/components/schemas/Address'
-      xml:
-        name: location
     Comment:
       type: object
       properties:
@@ -911,9 +953,7 @@ components:
           type: string
           example: This event is organized by EGSC at Columbia University to bid farewell to graduating class.
         timeStamp:
-          $ref: '#/components/schemas/TimeStamp'          
-      xml:
-        name: comment
+          $ref: '#/components/schemas/TimeStamp'
     User:
       type: object
       properties:
@@ -949,8 +989,6 @@ components:
           items:
             type: string
             example: K2dqRTEsWywADM4GacbKISlLrtRh9bPW
-      xml:
-        name: user
     Tag:
       type: object
       properties:
@@ -958,8 +996,6 @@ components:
           type: string
           description: Name of the Tag
           enum: [graduation, socials, club, misc , educational]
-      xml:
-        name: tag
     Event:
       required:
         - title
@@ -996,8 +1032,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Tag'
-      xml:
-        name: event
     Notification:
       type: object
       properties:
@@ -1014,8 +1048,6 @@ components:
         toUserId:
           type: string
           example: K2dqRTEsWywADM4GacbKISlLrtRh9bPW
-      xml:
-        name: notification
     LiveStream:
       type: object
       properties:
@@ -1026,8 +1058,6 @@ components:
         eventId:
           type: string
           example: K2dqRTEsWywADM4GacbKISlLrtRh9bPW
-      xml:
-        name: liveStream
     EventContent:
       type: object
       properties:
@@ -1038,8 +1068,6 @@ components:
         eventId:
           type: string
           example: K2dqRTEsWywADM4GacbKISlLrtRh9bPW
-      xml:
-        name: liveStream
     ApiResponse:
       type: object
       properties:
@@ -1050,8 +1078,6 @@ components:
           type: string
         message:
           type: string
-      xml:
-        name: '##default'
   requestBodies:
     UserArray:
       description: List of user object
