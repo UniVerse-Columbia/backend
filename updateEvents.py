@@ -7,7 +7,7 @@ import ast
 import random
 
 
-df = pd.read_csv("user-events_new.csv")
+df = pd.read_csv("data/user-events_new.csv")
 
 
 s3urlClient =  boto3.client('s3',region_name = "us-east-1",aws_access_key_id="AKIA4LDBWFESAPUBTU7X",aws_secret_access_key= "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")
@@ -26,7 +26,7 @@ for index,row in df.iterrows():
     tag = list(row['tags'].split(";"))[0]
 
 
-    data = {"imageUrl": s3urlClient.generate_presigned_url(ClientMethod='get_object', Params={'Bucket': 'eventstaticcontent', 'Key': random.choice(tagURl[tag])} ,ExpiresIn=3600) }
+    data = {"imageUrl": s3urlClient.generate_presigned_url(ClientMethod='get_object', Params={'Bucket': 'eventstaticcontent', 'Key': random.choice(tagURl[tag])} ,ExpiresIn=172800) }
     
   
     data_json = json.dumps({

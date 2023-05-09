@@ -952,7 +952,7 @@ components:
         content: 
           type: string
           example: This event is organized by EGSC at Columbia University to bid farewell to graduating class.
-        timeStamp:
+        timestamp:
           $ref: '#/components/schemas/TimeStamp'
     User:
       type: object
